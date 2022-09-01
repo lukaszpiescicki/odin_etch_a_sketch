@@ -3,18 +3,32 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root{
+    --quantity: 16;
+}
 body{
-    padding: 20px;
+    padding: 20px; 
 }
 
 .container{
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--quantity), 1fr);
     grid-gap: 5px;
+    width: 960px;
+    margin: 0 auto;
+    
 }
 .container > div{
     border: 1px solid black;
     aspect-ratio: 1;
 }
 
+.square:hover{
+    background-color: red;
+}
+
+button{
+    display: block;
+    margin: 0px auto 20px auto;
+    padding: 15px;
+}
