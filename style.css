@@ -5,6 +5,9 @@
 }
 :root{
     --quantity: 16;
+    --red:0;
+    --green:0;
+    --blue:0;
 }
 body{
     padding: 20px; 
@@ -24,7 +27,7 @@ body{
 }
 
 .square:hover{
-    background-color: red;
+    background-color: rgb(var(--red),var(--green),var(--blue));
 }
 
 button{

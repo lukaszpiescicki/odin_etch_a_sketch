@@ -1,6 +1,9 @@
 const container = document.querySelector('.container');
 const button = document.getElementById('btn');
 const quantityVariable = '--quantity';
+const red = '--red';
+const green = '--green';
+const blue = '--blue';
 let squaresQuantity = 16;
 
 const addSquareToContainer = function(quantity){
@@ -8,6 +11,13 @@ const addSquareToContainer = function(quantity){
         const square = document.createElement('div');
         square.classList.add(`square`);
         container.appendChild(square);
+        square.addEventListener('mouseover', (e) =>{
+            let squareHover = document.querySelector('.square:hover');
+            squareHover.style.setProperty(red,getRandomInt());
+            squareHover.style.setProperty(green,getRandomInt());
+            squareHover.style.setProperty(blue,getRandomInt());
+        })
+        
     }
 }
 
@@ -19,6 +29,9 @@ const removeSquares = function(){
     }
 }
 
+function getRandomInt() {
+    return Math.floor(Math.random() * (256));
+}
 addSquareToContainer(squaresQuantity);
 
 button.addEventListener('click', function(){
