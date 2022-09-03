@@ -1,27 +1,33 @@
 const container = document.querySelector('.container');
-const button = document.getElementById('btn');
+const gridSizeButton = document.getElementById('btn');
+const resetButton = document.getElementById('resetBtn');
 const quantityVariable = '--quantity';
-const red = '--red';
-const green = '--green';
-const blue = '--blue';
+let red = '--red';
+let green = '--green';
+let blue = '--blue';
 let squaresQuantity = 16;
 
-const addSquareToContainer = function(quantity){
+function addSquareToContainer(quantity){
     for(let i = 1; i<=quantity*quantity;i++){
         const square = document.createElement('div');
         square.classList.add(`square`);
         container.appendChild(square);
-        square.addEventListener('mouseover', (e) =>{
-            let squareHover = document.querySelector('.square:hover');
-            squareHover.style.setProperty(red,getRandomInt());
-            squareHover.style.setProperty(green,getRandomInt());
-            squareHover.style.setProperty(blue,getRandomInt());
+        
+        square.addEventListener('mouseenter', () =>{
+            
+            // Random color of squares
+            red = getRandomInt();
+            green = getRandomInt();
+            blue = getRandomInt();
+            square.style.backgroundColor = `rgb(${red},${green},${blue})`;
+            // square.style.backgroundColor = 'black';
+    
         })
         
     }
 }
 
-const removeSquares = function(){
+function removeSquares(){
     let square = document.querySelector('.square');
     while(square){
         container.removeChild(square);
@@ -29,12 +35,14 @@ const removeSquares = function(){
     }
 }
 
+
+
 function getRandomInt() {
     return Math.floor(Math.random() * (256));
 }
 addSquareToContainer(squaresQuantity);
 
-button.addEventListener('click', function(){
+gridSizeButton.addEventListener('click', function(){
     
     let numberOfSquares = prompt('Pass a number of squares');
     if(numberOfSquares <= 100){
@@ -47,3 +55,8 @@ button.addEventListener('click', function(){
         alert('Pass a number higher than 0 and less than 101!');
     }
 });
+
+resetButton.addEventListener('click',function(){
+    removeSquares();
+    addSquareToContainer(squaresQuantity); 
+})

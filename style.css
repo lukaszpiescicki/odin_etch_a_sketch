@@ -5,9 +5,6 @@
 }
 :root{
     --quantity: 16;
-    --red:0;
-    --green:0;
-    --blue:0;
 }
 body{
     padding: 20px; 
@@ -16,7 +13,6 @@ body{
 .container{
     display: grid;
     grid-template-columns: repeat(var(--quantity), 1fr);
-    grid-gap: 5px;
     width: 960px;
     margin: 0 auto;
     
@@ -30,8 +26,15 @@ body{
     background-color: rgb(var(--red),var(--green),var(--blue));
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 button{
-    display: block;
-    margin: 0px auto 20px auto;
-    padding: 15px;
+    width: 100px;
+    padding: 15px 0;
+    margin-bottom: 20px;
 }
