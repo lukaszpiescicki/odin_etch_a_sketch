@@ -6,8 +6,11 @@
 :root{
     --quantity: 16;
 }
+
 body{
     padding: 20px; 
+    font-family: sans-serif;
+    background-image: url("background.jpg");
 }
 
 .container{
@@ -15,15 +18,12 @@ body{
     grid-template-columns: repeat(var(--quantity), 1fr);
     width: 960px;
     margin: 0 auto;
-    
+    border: 1px solid black;
+    background-color: white;
 }
 .container > div{
-    border: 1px solid black;
+    
     aspect-ratio: 1;
-}
-
-.square:hover{
-    background-color: rgb(var(--red),var(--green),var(--blue));
 }
 
 .buttons{
@@ -38,3 +38,50 @@ button{
     padding: 15px 0;
     margin-bottom: 20px;
 }
+
+#black,
+#random,
+#erase{
+    margin-top: 20px;
+}
+
+         
+#black,
+#btn {
+    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+         
+#random {
+    background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+ 
+           
+#erase,
+#resetBtn {
+    background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%);
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    color: black;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }

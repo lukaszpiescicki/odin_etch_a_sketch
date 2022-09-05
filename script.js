@@ -1,26 +1,34 @@
 const container = document.querySelector('.container');
-const gridSizeButton = document.getElementById('btn');
-const resetButton = document.getElementById('resetBtn');
+const gridSizeBtn = document.getElementById('btn');
+const resetBtn = document.getElementById('resetBtn');
+const blackBtn = document.getElementById('black');
+const randomBtn = document.getElementById('random');
+const eraseBtn = document.getElementById('erase');
 const quantityVariable = '--quantity';
+
 let red = '--red';
 let green = '--green';
 let blue = '--blue';
 let squaresQuantity = 16;
+let flag = '';
 
 function addSquareToContainer(quantity){
     for(let i = 1; i<=quantity*quantity;i++){
         const square = document.createElement('div');
         square.classList.add(`square`);
         container.appendChild(square);
-        
-        square.addEventListener('mouseenter', () =>{
-            
-            // Random color of squares
-            red = getRandomInt();
-            green = getRandomInt();
-            blue = getRandomInt();
-            square.style.backgroundColor = `rgb(${red},${green},${blue})`;
-            // square.style.backgroundColor = 'black';
+        square.addEventListener('mousedown', (e) =>{
+            if(flag === 'black'){
+                square.style.backgroundColor = `black`;
+            }else if(flag === 'random'){
+                red = getRandomInt();
+                green = getRandomInt();
+                blue = getRandomInt();
+                square.style.backgroundColor = `rgb(${red},${green},${blue})`;
+            }else if(flag === 'erase'){
+                square.style.backgroundColor = `white`;
+
+            }         
     
         })
         
@@ -35,14 +43,12 @@ function removeSquares(){
     }
 }
 
-
-
 function getRandomInt() {
     return Math.floor(Math.random() * (256));
 }
 addSquareToContainer(squaresQuantity);
 
-gridSizeButton.addEventListener('click', function(){
+gridSizeBtn.addEventListener('click', function(){
     
     let numberOfSquares = prompt('Pass a number of squares');
     if(numberOfSquares <= 100){
@@ -55,8 +61,22 @@ gridSizeButton.addEventListener('click', function(){
         alert('Pass a number higher than 0 and less than 101!');
     }
 });
-
-resetButton.addEventListener('click',function(){
+resetBtn.addEventListener('click',function(){
     removeSquares();
     addSquareToContainer(squaresQuantity); 
 })
+
+blackBtn.addEventListener('click', ()=>{
+    flag = 'black';
+}
+)
+
+randomBtn.addEventListener('click', ()=>{
+    flag = 'random';
+}
+)
+
+eraseBtn.addEventListener('click', ()=>{
+    flag = 'erase';
+}
+)
